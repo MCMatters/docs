@@ -5,18 +5,8 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/*',
       component: MarkDownComponent
-    },
-    {
-      path: '/:first',
-      component: MarkDownComponent,
-      children: [
-        {
-          path: ':second',
-          component: MarkDownComponent
-        }
-      ]
     }
   ]
 });

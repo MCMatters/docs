@@ -34,15 +34,19 @@
     },
     computed: {
       backUrl() {
-        const parts = location.pathname.split('/').filter(item => item);
+        let parts = location.pathname.split('/').filter(item => item);
 
         if (!parts.length) {
           return false;
         }
 
-        parts.pop();
+        if (parts.length <= 1) {
+          parts = [];
+        } else {
+          parts = parts.slice(0, parts.length - 1);
+        }
 
-        return parts.join('/') || '/';
+        return '/' + parts.join('/');
       }
     }
   };

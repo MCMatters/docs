@@ -4,7 +4,10 @@ declare(strict_types = 1);
 
 namespace App;
 
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
 use RuntimeException;
+use function file_exists, file_get_contents, header, preg_match, str_replace, trim;
 
 /**
  * Class Application
@@ -46,5 +49,33 @@ class Application
         }
 
         return file_get_contents($file);
+    }
+
+
+    /**
+     * @return void
+     */
+    protected function loadEnvironment(): void
+    {
+        try {
+            (new Dotenv(__DIR__.'/../'))->load();
+        } catch (InvalidPathException $e) {
+            echo 'Cannot load environment file';
+            die;
+        }
+    }
+
+    /**
+     * @param string $content
+     *
+     * @return string
+     */
+    protected function replaceEnvironmentVariables(string $content): string
+    {
+        foreach ($_ENV as $key => $value) {
+            $content = str_replace(":{$key}:", $value, $content);
+        }
+
+        return $content;
     }
 }
