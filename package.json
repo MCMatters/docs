@@ -3,7 +3,9 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --colors",
     "dev": "webpack --progress --hide-modules --colors",
-    "watch": "webpack --progress --hide-modules --colors --watch"
+    "watch": "webpack --progress --hide-modules --colors --watch",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "babel": {
     "presets": [
@@ -14,7 +16,8 @@
     "axios": "^0.17.1",
     "marked": "^0.3.17",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -32,5 +35,6 @@
     "vue-loader": "^14.1.0",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0"
-  }
+  },
+  "snyk": true
 }
