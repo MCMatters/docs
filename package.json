@@ -11,7 +11,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "marked": "^0.3.17",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1"
